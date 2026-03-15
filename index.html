@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Room Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <!-- 3D Canvas -->
+        <canvas id="three-canvas"></canvas>
+
+        <!-- Top Bar -->
+        <header id="top-bar">
+            <div class="logo">Room Studio</div>
+            <div class="top-center">
+                <span id="dimension-label" class="dim-label"></span>
+            </div>
+            <div class="top-controls">
+                <div class="season-selector">
+                    <button class="season-btn active" data-season="spring" title="Spring">🌷</button>
+                    <button class="season-btn" data-season="summer" title="Summer">☀️</button>
+                    <button class="season-btn" data-season="autumn" title="Autumn">🍂</button>
+                    <button class="season-btn" data-season="winter" title="Winter">❄️</button>
+                </div>
+                <button id="room-select-btn" class="icon-btn" title="Change Room">🏠</button>
+                <button id="clear-room-btn" class="icon-btn" title="Clear Furniture">🗑️</button>
+            </div>
+        </header>
+
+        <!-- View Controls -->
+        <div id="view-controls">
+            <button id="view-front" class="view-btn" title="Front View">Front</button>
+            <button id="view-corner" class="view-btn" title="Corner View">Corner</button>
+            <button id="view-top" class="view-btn" title="Top View">Top</button>
+        </div>
+
+        <!-- Room Selection Modal -->
+        <div id="room-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Choose a Room</h2>
+                <div id="room-grid" class="room-grid"></div>
+                <button class="modal-close" id="room-modal-close">✕</button>
+            </div>
+        </div>
+
+        <!-- Bottom Catalog Panel -->
+        <div id="catalog-panel">
+            <div id="catalog-tabs">
+                <button class="cat-tab active" data-category="seating">Seating</button>
+                <button class="cat-tab" data-category="tables">Tables</button>
+                <button class="cat-tab" data-category="bedroom">Bedroom</button>
+                <button class="cat-tab" data-category="storage">Storage</button>
+                <button class="cat-tab" data-category="lighting">Lighting</button>
+                <button class="cat-tab" data-category="decor">Decor</button>
+                <button class="cat-tab" data-category="kitchen">Kitchen</button>
+                <button class="cat-tab" data-category="bathroom">Bathroom</button>
+                <button class="cat-tab" data-category="seasonal">Seasonal</button>
+                <button class="cat-tab" data-category="surfaces">Surfaces</button>
+            </div>
+            <div id="catalog-items"></div>
+        </div>
+
+        <!-- Item Edit Popover -->
+        <div id="item-edit" class="hidden">
+            <div class="edit-row">
+                <button id="edit-rotate" class="edit-btn" title="Rotate 90°">🔄</button>
+                <button id="edit-forward" class="edit-btn" title="Move Forward">⬆️</button>
+                <button id="edit-backward" class="edit-btn" title="Move Back">⬇️</button>
+                <button id="edit-delete" class="edit-btn delete-btn" title="Delete">🗑️</button>
+            </div>
+            <div class="edit-row">
+                <div id="edit-colors" class="color-swatches"></div>
+            </div>
+            <div class="edit-row edit-info">
+                <span id="edit-dimensions" class="dim-text"></span>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js?v=3"></script>
+</body>
+</html>
